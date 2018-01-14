@@ -3,33 +3,46 @@ var bodyParser = require('body-parser')
 var app = express()
 var http = require('http').Server(app)
 var io = require('socket.io')(http)
+var mongoose = require('mongoose')
 
 app.use(express.static(__dirname))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: false}))
 
-var messages = [
-	{name: 'Himanshu', message: 'Hi'},
-	{name: 'Sudhanhsu', message: 'Hello'}
+var dbUrl = 'mongodb://userDB:userDB@ds255787.mlab.com:55787/learning-node'
 
-]
-
+var Message = mongoose.model('Message', {
+	name: String,
+	message: String
+})
 
 app.get('/messages', (req, res) => {
-	res.send(messages)
+	Message.find({}, (err, messages) => {
+		res.send(messages)
+	})
 });
 
 app.post('/messages', (req, res) => {
-	console.log(req.body);
-	messages.push(req.body);
-	io.emit('message', req.body)
-	res.sendStatus(200)
+	var message = new Message(req.body)
+
+	message.save((err) => {
+		if(err)
+			sendStatus(500)
+
+		io.emit('message', req.body)
+		res.sendStatus(200)
+	})
+
 });
 
 io.on('connection', (socket) => {
 	console.log("user connection");
 })
 
+//MongoDB connection
+mongoose.connect(dbUrl, { useMongoClient: true}, (err) => {
+	console.log('a user connected');
+})
 
 var server = http.listen(3000, () => {
 	console.log('server is listening', server.address().port);
