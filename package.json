@@ -4,7 +4,8 @@
   "description": "",
   "main": "asyn-demo.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jasmine"
+    
   },
   "keywords": [],
   "author": "Himanshu Pandey",
@@ -15,5 +16,8 @@
     "lodash": "^4.17.4",
     "mongoose": "^4.13.9",
     "socket.io": "^2.0.4"
+  },
+  "devDependencies": {
+    "jasmine": "^2.8.0"
   }
 }
