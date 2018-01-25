@@ -16,8 +16,14 @@ var fs = require('fs');
 // fs.rmdirSync('stuff'); // create dir
 
 //Create directory -> then create Me.txt file
-// fs.mkdir('stuff', function(){
-// 	fs.readFile('my.txt', 'utf-8', function(err,data){
-// 	  fs.writeFile('./stuff/Me.txt', data);
-// 	});
-// });
+fs.mkdir('stuff', function(){
+	fs.readFile('my.txt', 'utf-8', function(err,data){
+	  fs.writeFile('./stuff/Me.txt', data);
+	});
+});
+
+//Remove Directories
+
+fs.unlink('./stuff/Me.txt', function(){
+	fs.rmdir('stuff');
+});
