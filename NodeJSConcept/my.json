@@ -1,0 +1,23 @@
+{
+  "name": "Learning_NodeJS",
+  "version": "1.0.0",
+  "description": "",
+  "main": "asyn-demo.js",
+  "scripts": {
+    "test": "jasmine"
+  },
+  "keywords": [],
+  "author": "Himanshu Pandey",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "lodash": "^4.17.4",
+    "mongoose": "^4.13.9",
+    "socket.io": "^2.0.4"
+  },
+  "devDependencies": {
+    "jasmine": "^2.8.0",
+    "request": "^2.83.0"
+  }
+}
