@@ -16,19 +16,53 @@ var http = require('http');
 var fs = require('fs');
 
 var server = http.createServer(function(req, res){
-	// console.log('request was made: ' + req.url);
-	// res.writeHead(200, {'Content-Type': 'text/html'});
+	console.log('request was made: ' + req.url);
+	if(req.url === '/home' || req.url === '/') {
+		res.writeHead(200, {'Content-Type': 'text/html'});
+		fs.createReadStream(__dirname + '/index.html').pipe(res);
+	} else if (req.url === '/contact') {
+		res.writeHead(200, {'Content-Type': 'text/html'});
+		fs.createReadStream(__dirname + '/contact.html').pipe(res);
+	} else if (req.url === '/api') {
+		var myObj = {
+			name: 'Himanshu',
+			job: 'Software Engineer',
+			age: '27'
+		}; 
+		res.writeHead(200, {'Content-Type': 'application/json'});
+		res.end(JSON.stringify(myObj));
+	} else {
+		res.writeHead(400, {'Content-Type': 'text/html'});
+		fs.createReadStream(__dirname + '/404.html').pipe(res);
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	// var myReadStream = fs.createReadStream(__dirname + '/index.html', 'utf-8');
 	// myReadStream.pipe(res);
-	res.writeHead(200, {'Content-Type': 'application/json'});
-	// var myObj = {
-	// 	name: 'Himanshu',
-	// 	job: 'Software Engineer',
-	// 	age: '27'
-	// };
+	// res.writeHead(200, {'Content-Type': 'application/json'});
+	// // var myObj = {
+	// // 	name: 'Himanshu',
+	// // 	job: 'Software Engineer',
+	// // 	age: '27'
+	// // };
 
-	var myObjJson = fs.createReadStream(__dirname + '/my.json');
-	myObjJson.pipe(res);
+	// var myObjJson = fs.createReadStream(__dirname + '/my.json');
+	// myObjJson.pipe(res);
 });
 
 server.listen(3000, '127.0.0.1');
