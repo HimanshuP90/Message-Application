@@ -67,12 +67,6 @@ mongoose.connect(dbUrl, { useMongoClient: true}, (err) => {
 	console.log('a user connected');
 })
 
-// var server = http.listen(3000, () => {
-// 	console.log('server is listening', server.address().port);
-// });
-// 
-// 
-
-var server = http.listen(process.env.PORT || 3000, function(){
-  console.log('listening on', http.address().port);
+var server = http.listen(3000, () => {
+	console.log('server is listening', server.address().port);
 });
