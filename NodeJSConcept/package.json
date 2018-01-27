@@ -1,0 +1,15 @@
+{
+  "name": "NodeJSConcept",
+  "version": "1.0.0",
+  "description": "How can I protect against XSS? XSS, or Cross-Site Scripting, is a technique that enables attackers to run externally injected JavaScript in the context of the attacked page. Once the attackers manage to do so, it can access the full range of Web APIs.",
+  "main": "Buffer.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.2"
+  }
+}
